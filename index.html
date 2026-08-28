@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ko"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="TQQQ봇">
+<title>TQQQ 무한매수 — 오늘 할 일</title>
+<style>
+  :root {
+    color-scheme: light dark;
+    --bg:#f2f2f7; --card:#fff; --text:#1c1c1e; --sub:#8e8e93;
+    --line:#f0f0f0; --line2:#f5f5f5; --empty:#c7c7cc; --shadow:rgba(0,0,0,.08);
+    --badge-bg:#eef2ff; --badge-fg:#4338ca;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg:#000; --card:#1c1c1e; --text:#f2f2f7; --sub:#98989f;
+      --line:#2c2c2e; --line2:#2c2c2e; --empty:#48484a; --shadow:rgba(0,0,0,.4);
+      --badge-bg:#1e2240; --badge-fg:#a5b4fc;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, "Malgun Gothic", sans-serif; margin:0;
+          background:var(--bg); color:var(--text); padding:16px; max-width:480px; margin:0 auto; }
+  .card { background:var(--card); border-radius:16px; padding:18px 20px; margin-bottom:14px;
+           box-shadow:0 1px 3px var(--shadow); }
+  h1 { font-size:20px; margin:4px 0 2px; }
+  .sub { color:var(--sub); font-size:13px; margin-bottom:14px; }
+  .stat { display:flex; justify-content:space-between; padding:6px 0;
+           border-bottom:1px solid var(--line); font-size:15px; }
+  .stat:last-child { border-bottom:none; }
+  .stat b { font-weight:600; }
+  .section-title { font-size:15px; font-weight:700; margin:0 0 8px;
+                     display:flex; align-items:center; gap:6px; }
+  table { width:100%; border-collapse:collapse; font-size:14px; }
+  td { padding:7px 4px; border-bottom:1px solid var(--line2); }
+  td.px { color:#007aff; font-weight:600; text-align:right; }
+  td.qty { text-align:right; color:var(--sub); }
+  td.won { text-align:right; color:var(--sub); font-size:12px; }
+  .buy .section-title { color:#d70015; }
+  .sell .section-title { color:#0071e3; }
+  .empty { color:var(--empty); font-size:14px; margin:0; }
+  .updated { text-align:center; color:var(--empty); font-size:11px; margin-top:6px; }
+  .hero { text-align:center; padding:6px 0 14px; }
+  .hero .num { font-size:34px; font-weight:700; letter-spacing:-0.5px; }
+  .hero .lbl { font-size:12px; color:var(--sub); margin-top:2px; }
+  .badge { display:inline-block; padding:2px 9px; border-radius:20px; font-size:12px;
+            font-weight:600; background:var(--badge-bg); color:var(--badge-fg); }
+</style>
+</head><body>
+
+<div class="card">
+  <div class="section-title">💵 원금 대비 수익률</div>
+  <div style="display:flex;gap:8px;">
+    <div style="flex:1;text-align:center;">
+    <div style="font-size:12px;color:var(--sub);margin-bottom:2px;">$ 기준</div>
+    <div style="font-size:24px;font-weight:800;color:#34c759;letter-spacing:-0.5px;">+0.78%</div>
+    <div style="font-size:11px;color:var(--sub);margin-top:2px;">원금 $4,714 → $4,680</div>
+  </div>
+    <div style="width:1px;background:var(--line);"></div>
+    <div style="flex:1;text-align:center;">
+    <div style="font-size:12px;color:var(--sub);margin-bottom:2px;">₩ 기준</div>
+    <div style="font-size:24px;font-weight:800;color:#ff3b30;letter-spacing:-0.5px;">-4.58%</div>
+    <div style="font-size:11px;color:var(--sub);margin-top:2px;">환전원금 6,740,000원 → 6,431,126원</div>
+  </div>
+  </div>
+</div>
+<div class="card">
+  <h1>📅 2026-08-28 (금)</h1>
+  <div class="sub"><span class="badge">추세 1단계</span> · 전반전</div>
+  <div class="hero">
+    <div class="num">$4,680.28</div>
+    <div class="lbl">총자산(잔금+평가액) · 약 643만원</div>
+  </div>
+  <div class="stat"><span>보유 / 평단</span><b>14주 · $70.8886</b></div>
+  <div class="stat"><span>잔금</span><b>$3,653.66</b> <span style="color:#8e8e93;font-size:12px">약 502만원</span></div>
+  <div class="stat"><span>분할진행 T</span><b>7.2237 / 22</b></div>
+</div>
+
+<div class="card">
+  <div class="section-title">📈 자산 추이 (최근 60거래일)</div>
+  <p class="empty">추이를 그리려면 매매일지가 2일 이상 쌓여야 합니다</p>
+</div>
+
+<div class="card">
+  <div class="section-title">💰 복리성과</div>
+  <div class="stat"><span>평가손익(미실현)</span><b style="color:#34c759">$+34.18</b></div>
+  <div class="stat"><span>누적 실현손익</span><b style="color:#34c759">$2.44</b></div>
+  <div class="stat"><span>완료 사이클</span><b>0회</b></div>
+  <div class="stat"><span>원금대비 수익률</span><b style="color:#34c759">+0.78%</b></div>
+</div>
+
+<div class="card buy">
+  <div class="section-title">📥 오늘 밤 매수 (LOC)</div>
+  <table><tr><td>절반매수</td><td class="px">$74.53</td><td class="qty">×1주</td><td class="won">약 10만원</td></tr><tr><td>1회매수</td><td class="px">$70.89</td><td class="qty">×1주</td><td class="won">약 10만원</td></tr></table>
+</div>
+
+<div class="card sell">
+  <div class="section-title">📤 오늘 밤 매도 (LOC)</div>
+  <table><tr><td>쿼터매도</td><td class="px">$74.54</td><td class="qty">×1주</td><td class="won">약 10만원</td></tr><tr><td>1차익절</td><td class="px">$77.98</td><td class="qty">×6주</td><td class="won">약 64만원</td></tr><tr><td>전량익절</td><td class="px">$81.52</td><td class="qty">×7주</td><td class="won">약 78만원</td></tr></table>
+</div>
+
+<div class="card">
+  <div class="section-title">📒 최근 매매일지</div>
+  <table><tr><td>08-28</td><td>쿼터매도×1주</td><td class="qty">14주</td></tr></table>
+</div>
+
+<div class="updated">마지막 갱신 2026-08-28 22:49 KST</div>
+
+</body></html>
