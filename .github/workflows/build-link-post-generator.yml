@@ -1,0 +1,45 @@
+name: 링크 게시글 생성기 exe 빌드
+
+on:
+  push:
+    paths:
+      - "link-post-generator/**"
+      - ".github/workflows/build-link-post-generator.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: 패키지 설치
+        run: pip install -r link-post-generator/requirements.txt pyinstaller
+
+      - name: exe 빌드
+        working-directory: link-post-generator
+        run: pyinstaller --onefile --windowed --name LinkPostGenerator main.py
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: LinkPostGenerator
+          path: link-post-generator/dist/LinkPostGenerator.exe
+
+      - name: 다운로드 페이지(Release)에 올리기
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release delete link-post-generator --yes --cleanup-tag || true
+          gh release create link-post-generator \
+            link-post-generator/dist/LinkPostGenerator.exe \
+            --target "$GITHUB_SHA" \
+            --title "링크 게시글 생성기" \
+            --notes "LinkPostGenerator.exe를 받아 더블클릭하면 실행됩니다. 처음 실행할 때 윈도우 보안 경고가 뜨면 '추가 정보' → '실행'을 누르세요."

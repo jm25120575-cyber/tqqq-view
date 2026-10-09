@@ -99,11 +99,11 @@ def extract(url: str) -> PageInfo:
         url = "https://" + url
 
     res = _fetch(url)
-    soup = BeautifulSoup(res.text, "lxml")
+    soup = BeautifulSoup(res.text, "html.parser")
 
     frame_url = _naver_blog_frame(res.url, soup)
     if frame_url:
-        soup = BeautifulSoup(_fetch(frame_url).text, "lxml")
+        soup = BeautifulSoup(_fetch(frame_url).text, "html.parser")
 
     title = _meta(soup, "og:title", "twitter:title")
     if not title and soup.title:
