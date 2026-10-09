@@ -1,4 +1,4 @@
-name: 링크 게시글 생성기 exe 빌드
+name: 게시판 자동 글올리기 exe 빌드
 
 on:
   push:
@@ -25,7 +25,14 @@ jobs:
 
       - name: exe 빌드
         working-directory: link-post-generator
-        run: pyinstaller --onefile --windowed --name LinkPostGenerator main.py
+        run: pyinstaller --onefile --windowed --name LinkPostGenerator --collect-all playwright main.py
+
+      - name: exe가 브라우저를 여는지 확인
+        working-directory: link-post-generator
+        shell: pwsh
+        run: |
+          $p = Start-Process -FilePath dist\LinkPostGenerator.exe -ArgumentList "--selftest" -Wait -PassThru
+          if ($p.ExitCode -ne 0) { throw "selftest 실패: $($p.ExitCode)" }
 
       - uses: actions/upload-artifact@v4
         with:
@@ -41,5 +48,5 @@ jobs:
           gh release create link-post-generator \
             link-post-generator/dist/LinkPostGenerator.exe \
             --target "$GITHUB_SHA" \
-            --title "링크 게시글 생성기" \
+            --title "게시판 자동 글올리기" \
             --notes "LinkPostGenerator.exe를 받아 더블클릭하면 실행됩니다. 처음 실행할 때 윈도우 보안 경고가 뜨면 '추가 정보' → '실행'을 누르세요."
